@@ -1,2 +1,2 @@
 # TheEastMart
-A Selenium Framework for a e-commerce website
+A Selenium Framework for an e-commerce website
