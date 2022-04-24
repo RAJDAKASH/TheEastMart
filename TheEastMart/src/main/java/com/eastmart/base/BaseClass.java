@@ -35,21 +35,9 @@ public class BaseClass {
 	@BeforeSuite
 	public void loadConfig() {
 
-		try {
-			
-			DOMConfigurator.configure("log4j.xml");
-			prop = new Properties();
-			FileInputStream ip = new FileInputStream(
-					System.getProperty("user.dir") + "\\Configuration\\config.properties");
-			prop.load(ip);
-			
-			
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		try {	
+			DOMConfigurator.configure(System.getProperty("user.dir")+"\\src\\test\\resources\\Configuration\\log4j.xml");
+		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,7 +51,7 @@ public class BaseClass {
 		String currentUsrDir= System.getProperty("user.dir");
 		
 		Properties prop = new Properties();
-		String fileName = currentUsrDir+"\\Configuration\\config.properties";
+		String fileName = currentUsrDir+"\\src\\test\\resources\\Configuration\\config.properties";
 		try (FileInputStream fis = new FileInputStream(fileName)) {
 		    prop.load(fis);
 		} catch (FileNotFoundException ex) {

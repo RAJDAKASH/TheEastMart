@@ -13,7 +13,7 @@ public class DataProviderClass {
 
 	NewExcelLibrary obj = new NewExcelLibrary();
 
-//Class --> LoginPageTest,HomePageTest Test Case--> loginTest, wishListTest, orderHistoryandDetailsTest
+
 
 	@DataProvider(name = "credentials")
 	public Object[][] getCredentials() {
