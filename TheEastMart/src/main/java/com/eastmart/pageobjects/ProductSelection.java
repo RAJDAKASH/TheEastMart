@@ -27,7 +27,7 @@ public class ProductSelection extends BaseClass{
 	
 	
 	
-	@FindBy (xpath = "//*[@data-cel-widget='search_result_2']//h2")
+	@FindBy (xpath = "(//*[@cel_widget_id='MAIN-SEARCH_RESULTS-2']//img)[1]")
 	WebElement AMZ_SECOND_HIGHEST_ITEM ;
 	
 	@FindBy (xpath = "//h1[text()=' About this item ']")

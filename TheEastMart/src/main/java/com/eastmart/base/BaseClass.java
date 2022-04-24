@@ -6,12 +6,16 @@ import com.beust.jcommander.Parameter;
 import com.eastmart.actiondriver.Action;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -40,39 +44,44 @@ public class BaseClass {
 		}
 	}
 	
-	@Parameters({"platform","hubUrl"})
+	
 	@BeforeSuite
-	public void launchApp(String platform, String hubUrl) {	
-		boolean dockerSeleniumGrid=true;
-		if(hubUrl.equalsIgnoreCase("na")) {
-			dockerSeleniumGrid=false;
-		}
-		if(!dockerSeleniumGrid) {
+	public void launchApp() throws Exception {	
 		
 		String currentUsrDir= System.getProperty("user.dir");
-		System.out.println(currentUsrDir);
-		if(platform.equalsIgnoreCase("windows")) {
-			System.setProperty("webdriver.chrome.driver",currentUsrDir+"\\src\\test\\resources\\BrowserDrivers\\windows\\chromedriver.exe");
-		}
-		else if(platform.equalsIgnoreCase("mac")) {
-			System.setProperty("webdriver.chrome.driver",currentUsrDir+"\\src\\test\\resources\\BrowserDrivers\\mac\\chromedriver.exe");
-		}
-		else if(platform.equalsIgnoreCase("linux")) {
-			System.setProperty("webdriver.chrome.driver",currentUsrDir+"\\src\\test\\resources\\BrowserDrivers\\linux\\chromedriver.exe");
+		
+		Properties prop = new Properties();
+		String fileName = currentUsrDir+"\\Configuration\\config.properties";
+		try (FileInputStream fis = new FileInputStream(fileName)) {
+		    prop.load(fis);
+		} catch (FileNotFoundException ex) {
+		    // FileNotFoundException catch is optional and can be collapsed
+		} catch (IOException ex) {
+		   
 		}
 		
-		// String browserName = prop.getProperty("browser");	
-		driver=new ChromeDriver();
-		//Maximize the screen
-		driver.manage().window().maximize();
-		//Delete all the cookies
-		driver.manage().deleteAllCookies();		
-		driver.get("https://www.amazon.in");
+		String urlToLaunch=prop.getProperty("url");
+		String dockerHubUrl=System.getProperty("hubUrl");
+		
+		
+		if(dockerHubUrl.equalsIgnoreCase("NA")) {
+			
+			  ChromeOptions co= new ChromeOptions();
+			  WebDriverManager.chromedriver().setup(); 
+			  driver=new ChromeDriver();
+			  driver.manage().window().maximize(); 
+			  driver.manage().deleteAllCookies();
+			 
 		}
 		else {
 			
+			  DesiredCapabilities dc= new DesiredCapabilities();
+			  dc.setBrowserName("chrome"); driver= new RemoteWebDriver(new
+			  URL(dockerHubUrl),dc);
 		}
 		
+		driver.manage().window().maximize(); 
+		driver.get(urlToLaunch);
 		
 	}
 	
