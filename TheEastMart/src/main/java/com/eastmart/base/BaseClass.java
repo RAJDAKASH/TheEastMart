@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -32,10 +34,13 @@ public class BaseClass {
 	public void loadConfig() {
 
 		try {
+			DOMConfigurator.configure("log4j.xml");
 			prop = new Properties();
 			FileInputStream ip = new FileInputStream(
 					System.getProperty("user.dir") + "\\Configuration\\config.properties");
 			prop.load(ip);
+			
+			
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -87,7 +92,7 @@ public class BaseClass {
 	
 	@AfterSuite
 	public void tearDown() {
-	//	driver.quit();
+		driver.quit();
 	}
 
 }

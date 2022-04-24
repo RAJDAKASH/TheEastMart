@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.eastmart.actiondriver.Action;
 import com.eastmart.base.BaseClass;
+import com.eastmart.utility.Log;
 
 /**
  * @author akash raj
@@ -56,7 +57,9 @@ public class ProductSelection extends BaseClass{
 		
 		String aboutThisItemText=AMZ_ABOUT_THIS_ITEM.getText();
 		System.out.println(aboutThisItemText);
+		Log.info(aboutThisItemText);
 		for(WebElement aboutItemTextElement: PRODUCT_DESCRIPTION_TEXT) {
+			Log.info(aboutItemTextElement.getText());
 			System.out.println(aboutItemTextElement.getText());
 		}
 		return aboutThisItemText;
