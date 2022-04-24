@@ -19,7 +19,7 @@ public class ExtentManager {
 	public static void setExtent() throws Exception {	
 		extent= new ExtentReports();
 		ExtentHtmlReporter spark = new ExtentHtmlReporter("TheEastMart.html");
-	//	spark.loadXMLConfig(System.getProperty("user.dir")+"\\extent-config.xml");
+		spark.loadXMLConfig(System.getProperty("user.dir")+"\\extent-config.xml");
 		extent.attachReporter(spark);
 		
 		
