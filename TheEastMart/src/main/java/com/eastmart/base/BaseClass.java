@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 
 import com.beust.jcommander.Parameter;
 import com.eastmart.actiondriver.Action;
+import com.eastmart.utility.ExtentManager;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,6 +36,7 @@ public class BaseClass {
 	public void loadConfig() {
 
 		try {
+			
 			DOMConfigurator.configure("log4j.xml");
 			prop = new Properties();
 			FileInputStream ip = new FileInputStream(
@@ -47,11 +50,15 @@ public class BaseClass {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
 	@BeforeSuite
 	public void launchApp() throws Exception {	
+		ExtentManager.setExtent();
 		
 		String currentUsrDir= System.getProperty("user.dir");
 		
@@ -73,7 +80,7 @@ public class BaseClass {
 			
 			  ChromeOptions co= new ChromeOptions();
 			  WebDriverManager.chromedriver().setup(); 
-			  driver=new ChromeDriver();
+			  driver=new ChromeDriver(co);
 			  driver.manage().window().maximize(); 
 			  driver.manage().deleteAllCookies();
 			 
@@ -90,8 +97,10 @@ public class BaseClass {
 		
 	}
 	
-	@AfterSuite
+	@AfterSuite(alwaysRun=true)
 	public void tearDown() {
+		System.out.println("tear down method ");
+		ExtentManager.endReport();
 		driver.quit();
 	}
 
