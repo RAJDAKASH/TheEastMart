@@ -10,6 +10,14 @@ import com.eastmart.base.BaseClass;
 import com.eastmart.actiondriver.Action;
 public class HomePage extends BaseClass{
 	
+	/**
+	 * This framework follows Page Factory Design pattern.
+	 * Page factory design pattern improves the readability and maintainability of code.
+	 * 
+	 * All the objects and methods related to Home Page are present here.
+	 * 
+	 */
+	
 	@FindBy (xpath = "//*[@id='nav-hamburger-menu']")
 	WebElement AMZ_HAM_BURGER_MENU ;
 	
@@ -27,6 +35,10 @@ public class HomePage extends BaseClass{
 		PageFactory.initElements(driver, this);
 	}
 	
+	
+	/*
+	 * Method used for navigating to smasung tv from homepage
+	 */
 	public void navigateToSamsungTv() throws InterruptedException {
 		
 		Action.explicitWait(driver,AMZ_HAM_BURGER_MENU,Duration.ofMillis(10000));

@@ -4,6 +4,12 @@ import org.apache.log4j.Logger;
 
 public class Log {
 	
+	/**
+	 * Writing custome methods before calling objects of log4j class
+	 * so some design should be added before adding logs
+	 * 
+	 */
+	
 	// Initialize Log4j logs
 	public static Logger Log = Logger.getLogger(Log.class.getName());
 

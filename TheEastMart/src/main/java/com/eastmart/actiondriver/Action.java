@@ -25,7 +25,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.eastmart.base.BaseClass;
 
-
+/**
+ * 
+ * @author akashraj
+ * 
+ * Some commom utility methods added to framework like click ,scroll, send text , switch frame, explicit wait etc...
+ *
+ */
 
 
 public class Action extends BaseClass {
@@ -756,5 +762,13 @@ public class Action extends BaseClass {
 		String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
 		return currentDate;
 	}
-
+	
+	public static boolean compareText(String str1,String str2) {
+		if(str1.equals(str2)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

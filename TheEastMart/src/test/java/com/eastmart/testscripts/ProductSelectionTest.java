@@ -8,6 +8,10 @@ import com.eastmart.utility.Log;
 
 public class ProductSelectionTest {
 	public static ProductSelection productSelection;
+	
+	/**
+	 * This class contains tests related to product selection page
+	 */
 
 	@Test
 	public static void selectSecondHighestTvTest() {
@@ -20,6 +24,7 @@ public class ProductSelectionTest {
 		}
 		catch (Exception e) {
 			Log.error(e.getMessage());
+			Assert.fail();
 		}
 
 	}

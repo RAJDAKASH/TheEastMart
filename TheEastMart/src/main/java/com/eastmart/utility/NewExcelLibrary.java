@@ -13,6 +13,11 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class NewExcelLibrary {
+	
+	/**
+	 * 
+	 * A class with methods which can be used to fetch data from excel files
+	 */
 
 	public static String path = System.getProperty("user.dir") + "\\src\\test\\resources\\TestData\\TestData_Demo.xlsx";
 

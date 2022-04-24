@@ -7,7 +7,15 @@ import java.util.Map;
 
 import org.testng.annotations.DataProvider;
 
-
+/**
+ * 
+ * 
+ * @author akashRaj
+ * 
+ * Data provider utility to maake the framework Data driven
+ * It can be used to serve different sets of data to same method.
+ *
+ */
 
 public class DataProviderClass {
 
