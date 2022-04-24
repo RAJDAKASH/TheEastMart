@@ -1,7 +1,7 @@
-# TheEastMart
-A Selenium Framework for an e-commerce website
-SELENIUM Framework with AI/ML capabilities ( Artificial Intelligence/ Machine Learning)
+#TheEastMart
 
+SELENIUM Framework with AI/ML capabilities ( Artificial Intelligence/ Machine Learning)
+'
 GitHub :- https://github.com/RAJDAKASH/TheEastMart.git
 
 /**********************************************************************************************
