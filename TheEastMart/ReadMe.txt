@@ -1,5 +1,6 @@
 SELENIUM Framework with AI/ML capabilities ( Artificial Intelligence/ Machine Learning)
 
+GitHub :- https://github.com/RAJDAKASH/TheEastMart.git
 
 /**********************************************************************************************
 /**********************************************************************************************
@@ -94,7 +95,7 @@ Features of framework  :-
 	5. Configured with Selenium Grid
 	5. Docker Run enabled
 	6. Unit Tests included 
-	7. Project is upload to GitHub
+	7. Project is upload to GitHub   :- https://github.com/RAJDAKASH/TheEastMart.git
 	8. AI/ML capabilities ( Artificial Intelligence/ Machine Learning)
 	
 /**********************************************************************************************
